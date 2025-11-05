@@ -20,20 +20,20 @@ Run `tokenize_data.ipynb` to tokenize the 3' UTR sequences into lists of tokens.
 
 Input Files:
 
-`UTR3DegPred/data/training_set_2.csv`
+Training dataset: `UTR3DegPred/data/training_set_2.csv`  
 
-`UTR3DegPred/data/testing_set_2.csv`
+Testing dataset: `UTR3DegPred/data/testing_set_2.csv`  
 
 Output Directory:
 
-`UTR3DegPred/data/deg_2`
+Fine-tuned dataset: `UTR3DegPred/data/deg_2`
 
 ### 2. Model Fine-Tuning
 Run `finetune.ipynb` to fine-tune LAMAR for mRNA half-life prediction. Here, the fine-tuned head contains two linear layers. During fine-tuning, the final embedding of [cls] token is input into the fine-tuned head.  
 
 Input Directory:
 
-`UTR3DegPred/data/deg_2`
+Fine-tuned dataset: `UTR3DegPred/data/deg_2`
 
 Output Directory:
 
@@ -57,13 +57,20 @@ Here, we used the optimal hyperparameters determined through cross-validation: b
 During fine-tuning, the training and testing loss will be displayed every 100 steps.
 
 ### 3. Model Evaluation
-Run `evaluation.ipynb` to evaluate the model's performance.
+Run `evaluation.ipynb` to evaluate the model's performance.  
 
-Evaluation Metrics:
+Input Files:  
 
-`Mean Squared Error (MSE)`
+Fine-tuned weight: `UTR3DegPred/saving_model/mammalian_4096/bs8_lr5e-5_wr0.05_16epochs_2/checkpoint-3180/model.safetensors`  
+This weight can be downloaded from Hugging Face (https://huggingface.co/zhw-e8/LAMAR/blob/main/UTR3DegPred/saving_model/mammalian_4096/bs8_lr5e-5_wr0.05_16epochs_2/checkpoint-3180/model.safetensors)
 
-`Spearman Correlation Coefficient`
+Evaluation dataset: `UTR3DegPred/data/validation_set.csv`  
+
+Evaluation Metrics:  
+
+`Mean Squared Error (MSE)`  
+
+`Spearman Correlation Coefficient`  
 
 Reference
 [1] Zhao W, Pollack JL, Blagev DP, Zaitlen N, McManus MT, Erle DJ. Massively parallel functional annotation of 3′ untranslated regions. Nat Biotechnol. 2014;32:387–91.
