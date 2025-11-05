@@ -26,27 +26,31 @@ Input Files:
 
 Output Directory:
 
-UTR3DegPred/data/deg_2
+`UTR3DegPred/data/deg_2`
 
 ### 2. Model Fine-Tuning
 Run `finetune.ipynb` to fine-tune LAMAR for mRNA half-life prediction.
 
-Input:
+Input Directory:
 
-UTR3DegPred/data/deg_2
+`UTR3DegPred/data/deg_2`
 
-Output:
+Output Directory:
 
-UTR3DegPred/saving_model/mammalian_4096/bs8_lr5e-5_wr0.05_16epochs_2
+`UTR3DegPred/saving_model/mammalian_4096/bs8_lr5e-5_wr0.05_16epochs_2`
+
+In this directory,  
+The fine-tuned weight is stored in `pytorch_model.bin`.  
+The training and testing loss are included in `trainer_state.json`.  
 
 Hyperparameter Configuration:
 Before training, set the following hyperparameters:
 
-Batch size
+`Batch size`
 
-Learning rate
+`Learning rate`
 
-Number of training epochs
+`Number of training epochs`
 
 Here, we used the optimal hyperparameters determined through cross-validation. During fine-tuning, the training and testing loss will be displayed every 100 steps.
 
@@ -55,9 +59,9 @@ Run `evaluation.ipynb` to evaluate the model's performance.
 
 Evaluation Metrics:
 
-Mean Squared Error (MSE)
+`Mean Squared Error (MSE)`
 
-Spearman Correlation Coefficient
+`Spearman Correlation Coefficient`
 
 Reference
 [1] Zhao W, Pollack JL, Blagev DP, Zaitlen N, McManus MT, Erle DJ. Massively parallel functional annotation of 3′ untranslated regions. Nat Biotechnol. 2014;32:387–91.
