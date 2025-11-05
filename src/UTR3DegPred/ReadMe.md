@@ -29,7 +29,7 @@ Output Directory:
 `UTR3DegPred/data/deg_2`
 
 ### 2. Model Fine-Tuning
-Run `finetune.ipynb` to fine-tune LAMAR for mRNA half-life prediction.
+Run `finetune.ipynb` to fine-tune LAMAR for mRNA half-life prediction. Here, the fine-tuned head contains two linear layers. During fine-tuning, the final embedding of [cls] token is input into the fine-tuned head.  
 
 Input Directory:
 
@@ -39,20 +39,22 @@ Output Directory:
 
 `UTR3DegPred/saving_model/mammalian_4096/bs8_lr5e-5_wr0.05_16epochs_2`
 
-In this directory,  
+In output directory,  
 The fine-tuned weight is stored in `pytorch_model.bin`.  
 The training and testing loss are included in `trainer_state.json`.  
 
-Hyperparameter Configuration:
+Hyperparameter Configuration:  
 Before training, set the following hyperparameters:
 
 `Batch size`
 
-`Learning rate`
+`Peak learning rate`
 
 `Number of training epochs`
 
-Here, we used the optimal hyperparameters determined through cross-validation. During fine-tuning, the training and testing loss will be displayed every 100 steps.
+Here, we used the optimal hyperparameters determined through cross-validation: batch size = 8, learning rate = 1e-4, number of training epochs = 16.  
+
+During fine-tuning, the training and testing loss will be displayed every 100 steps.
 
 ### 3. Model Evaluation
 Run `evaluation.ipynb` to evaluate the model's performance.
